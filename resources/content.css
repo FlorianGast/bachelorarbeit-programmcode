@@ -1,0 +1,113 @@
+.tooltip {
+  height: 20px;
+  width: 20px;
+  background-color: #052a68;
+  border-radius: 50%;
+  margin: auto;
+  padding: 10px;
+  /* position: absolute;
+  /* margin-left: 2%;
+  margin-top: 5px; */ */
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #6083a3;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+#scroll25 {
+    position: absolute;
+    z-index: 1;
+    width: 4px;
+    height: 25%;
+    border-radius: 4px;
+    background-color: #052a68;
+    margin-left: 4%
+}
+
+
+#scroll50 {
+    position: absolute;
+    z-index: 1;
+    width: 4px;
+    height: 50%;
+    border-radius: 4px;
+    background-color: #052a68;
+    margin-left: 6%
+}
+
+#scroll75 {
+    position: absolute;
+    z-index: 1;
+    width: 4px;
+    height: 75%;
+    border-radius: 4px;
+    background-color: #052a68;
+    margin-left: 8%
+}
+
+#scroll100 {
+    position: absolute;
+    z-index: 1;
+    width: 4px;
+    height: 100%;
+    border-radius: 4px;
+    background-color: #052a68;
+    margin-left: 10%
+}
+
+
+.tooltipScroll .tooltiptext {
+  visibility: hidden;
+  width: 150px;
+  background-color: #052a68;
+  opacity: 1;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltipScroll:hover .tooltiptext {
+  visibility: visible;
+}
+
+.infoBox {
+   width: 50%;
+  color: #555555;
+  background-color: #afc1d1;
+  border:  2px solid #052a68;
+  border-radius: 0 1em 1em 1em;
+  margin:  20px auto;
+  padding: 2em;
+}
+
+.button {
+  background-color: #052a68;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
