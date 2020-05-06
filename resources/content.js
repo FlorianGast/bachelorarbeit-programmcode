@@ -12,35 +12,134 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
 
 
 
+  var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://fonts.googleapis.com/icon?family=Material+Icons';
+      document.head.appendChild(link);
 
 
-
-//einglenden der Allgemeinen Daten
+//einblenden der Allgemeinen Daten
+var divInfoContainer = document.createElement("div");
 var divInfo = document.createElement("div");
 var woher = document.createElement("p");
 var wieLange = document.createElement("p");
-var btnNav = document.createElement("BUTTON");
-var btnKlickBtn = document.createElement("BUTTON");
-var btnScroll = document.createElement("BUTTON");
+var btnNav = document.createElement("label");
+var btnNavInput = document.createElement("input");
+var btnNavSpan = document.createElement("span");
+var btnOnPageKlick = document.createElement("label");
+var btnOnPageKlickInput = document.createElement("input");
+var btnOnPageKlickSpan = document.createElement("span");
+var btnScroll = document.createElement("label");
+var btnScrollInput = document.createElement("input");
+var btnScrollSpan = document.createElement("span");
 
+divInfoContainer.setAttribute("class", "infoBoxContainer");
+divInfoContainer.setAttribute("id", "infoBoxContainerClick");
 divInfo.setAttribute("class", "infoBox");
-btnNav.setAttribute("class", "button");
-btnKlickBtn.setAttribute("class", "button");
-btnScroll.setAttribute("class", "button");
 
-woher.innerHTML = "Besucher kamen am häufigsten von: " + msg.dataTap[0].woher;
-wieLange.innerHTML = "Besucher waren durchschnittlich auf dieser Seite: " + msg.dataTap[0].zeit;
-btnNav.innerHTML = "NavBar Info";
-btnKlickBtn.innerHTML = "Button Klick Info";
-btnScroll.innerHTML = "Scrolltiefe Info";
+btnNav.setAttribute("class", "switch");
+btnNavInput.setAttribute("id", "btn-Nav");
+btnNavInput.setAttribute("type", "checkbox");
+btnNavSpan.setAttribute("class", "slider");
+
+btnOnPageKlick.setAttribute("class", "switch");
+btnOnPageKlickInput.setAttribute("id", "btn-onPage");
+btnOnPageKlickInput.setAttribute("type", "checkbox");
+btnOnPageKlickSpan.setAttribute("class", "slider");
+
+btnScroll.setAttribute("class", "switch");
+btnScrollInput.setAttribute("id", "btn-scroll");
+btnScrollInput.setAttribute("type", "checkbox");
+btnScrollSpan.setAttribute("class", "slider");
+
+
+divInfoContainer.innerHTML = "click here for more analytics information and settings";
+woher.innerHTML = "häufigste Besucher Herkunft: " + msg.dataTap[0].woher;
+wieLange.innerHTML = "Durchschnittlich Besuchszeit in s: " + msg.dataTap[0].zeit;
+btnNav.innerHTML = "NavBar";
+btnOnPageKlick.innerHTML = "Button Klick";
+btnScroll.innerHTML = "Scrolltiefe";
+
+divInfoContainer.appendChild(divInfo);
+
+btnNav.appendChild(btnNavInput);
+btnNav.appendChild(btnNavSpan);
+
+btnOnPageKlick.appendChild(btnOnPageKlickInput);
+btnOnPageKlick.appendChild(btnOnPageKlickSpan);
+
+btnScroll.appendChild(btnScrollInput);
+btnScroll.appendChild(btnScrollSpan);
 
 divInfo.appendChild(woher);
 divInfo.appendChild(wieLange);
 divInfo.appendChild(btnNav);
-divInfo.appendChild(btnKlickBtn);
+divInfo.appendChild(btnOnPageKlick);
 divInfo.appendChild(btnScroll);
 
-document.querySelector("footer").appendChild(divInfo);
+document.body.insertBefore(divInfoContainer, document.body.firstChild);
+
+document.getElementById("infoBoxContainerClick").addEventListener("click", function () {
+  document.getElementsByClassName("infoBox")[0].classList.toggle("showInfoBox");
+});
+
+document.getElementById("btn-Nav").checked = true;
+document.getElementById("btn-onPage").checked = true;
+document.getElementById("btn-scroll").checked = true;
+
+// Button Tracking für NavBar Aktivierne/deaktivieren
+
+document.getElementById("btn-Nav").addEventListener("click", function () {
+
+  var check = document.getElementById("btn-Nav");
+  var aktuelElements = document.getElementsByClassName("nav-tracking");
+
+
+  if (check.checked == true) {
+    for (var i = 0; i < aktuelElements.length; i++) {
+      aktuelElements[i].style.display = "block";
+    }
+  } else {
+    for (var i = 0; i < aktuelElements.length; i++) {
+      aktuelElements[i].style.display = "none";
+    }
+  }
+});
+
+// Button Tracking für onPage Buttons Aktivierne/deaktivieren
+document.getElementById("btn-onPage").addEventListener("click", function () {
+
+  var check = document.getElementById("btn-onPage");
+  var aktuelElements = document.getElementsByClassName("btnOnPage-tracking");
+
+  if (check.checked == true) {
+    for (var i = 0; i < aktuelElements.length; i++) {
+      aktuelElements[i].style.display = "block";
+    }
+  } else {
+    for (var i = 0; i < aktuelElements.length; i++) {
+      aktuelElements[i].style.display = "none";
+    }
+  }
+});
+
+// Button Tracking für NavBar Aktivierne/deaktivieren
+document.getElementById("btn-scroll").addEventListener("click", function () {
+
+  var check = document.getElementById("btn-scroll");
+  var aktuelElements = document.getElementsByClassName("tooltipScroll");
+
+  if (check.checked == true) {
+    for (var i = 0; i < aktuelElements.length; i++) {
+      aktuelElements[i].style.display = "block";
+    }
+  } else {
+    for (var i = 0; i < aktuelElements.length; i++) {
+      aktuelElements[i].style.display = "none";
+    }
+  }
+});
+
 
 // funktion zum ermittel der gesamt Scrolls
   var scrollGesamt = 0;
@@ -73,37 +172,45 @@ document.querySelector("footer").appendChild(divInfo);
        if (document.querySelector(".bare-list--horizontal").children[j].firstElementChild.href.includes(linkeUrl)) {
          var divPopUp = document.createElement("div");
          var popUp = document.createElement("span");
+         var icon = document.createElement("i");
          //var text = document.createTextNode(msg.dataTap[i].EreignisseGesamt);
-         divPopUp.setAttribute("class", "tooltip");
+         divPopUp.setAttribute("class", "tooltip nav-tracking");
          popUp.setAttribute("class", "tooltiptext");
+         icon.setAttribute("class", "material-icons");
          //para.innerHTML = "Click-Rate";
          popUp.innerHTML = "Click-Rate: " + msg.dataTap[i].EreignisseGesamt;
+         icon.innerHTML = "info";
          divPopUp.appendChild(popUp);
+         divPopUp.appendChild(icon);
          document.querySelector(".bare-list--horizontal").children[j].appendChild(divPopUp);
        }
      }
-
-
   }
 
+
+  //Verarbeiten der Button Klicks auf der content Seite
   if (msg.dataTap[i].Ereignisaktion == "Button click") {
     for (var k = 0; k < buttonSize; k++) {
 
-      console.log("Button Link before " + document.getElementsByClassName("btn-hollow")[k].href);
+      //console.log("Button Link before " + document.getElementsByClassName("btn-hollow")[k].href);
       if (document.getElementsByClassName("btn-hollow")[k].href !== undefined) {
 
 
-        console.log("Button Link after " + document.getElementsByClassName("btn-hollow")[k].href);
+        //console.log("Button Link after " + document.getElementsByClassName("btn-hollow")[k].href);
 
         if (document.getElementsByClassName("btn-hollow")[k].href.includes(linkeUrl)) {
           var divPopUpButton = document.createElement("div");
           var popUpButton = document.createElement("span");
+          var icon = document.createElement("i");
           //var text = document.createTextNode(msg.dataTap[i].EreignisseGesamt);
-          divPopUpButton.setAttribute("class", "tooltip");
+          divPopUpButton.setAttribute("class", "tooltip btnOnPage-tracking");
           popUpButton.setAttribute("class", "tooltiptext");
+          icon.setAttribute("class", "material-icons");
           //para.innerHTML = "Click-Rate";
           popUpButton.innerHTML = "Click-Rate: " + msg.dataTap[i].EreignisseGesamt;
+          icon.innerHTML = "info";
           divPopUpButton.appendChild(popUpButton);
+          divPopUpButton.appendChild(icon);
           document.getElementsByClassName("btn-hollow")[k].appendChild(divPopUpButton);
         }
       }
@@ -126,7 +233,8 @@ document.querySelector("footer").appendChild(divInfo);
     scrollPopUp.setAttribute("class", "tooltiptext");
 
     scroll.innerText = "";
-    scroll.style.opacity= msg.dataTap[i].EreignisseGesamt / scrollGesamt;
+    // scroll.style.opacity= msg.dataTap[i].EreignisseGesamt / scrollGesamt;
+    scroll.style.backgroundColor = "rgba(252,68,69," + msg.dataTap[i].EreignisseGesamt / scrollGesamt; +")";
     scrollPopUp.innerHTML = "Scroll-Rate bis 100%: " + scrollInProzent.toFixed(2) + "% der Nutzer";
 
     scroll.appendChild(scrollPopUp);
@@ -146,7 +254,8 @@ document.querySelector("footer").appendChild(divInfo);
     scrollPopUp.setAttribute("class", "tooltiptext");
 
     scroll.innerText = "";
-    scroll.style.opacity= msg.dataTap[i].EreignisseGesamt / scrollGesamt;
+    // scroll.style.opacity= msg.dataTap[i].EreignisseGesamt / scrollGesamt;
+    scroll.style.backgroundColor = "rgba(252,68,69," + msg.dataTap[i].EreignisseGesamt / scrollGesamt; +")";
     scrollPopUp.innerHTML = "Scroll-Rate bis 75%: " + scrollInProzent.toFixed(2) + "% der Nutzer";
 
     scroll.appendChild(scrollPopUp);
@@ -167,7 +276,8 @@ document.querySelector("footer").appendChild(divInfo);
     scrollPopUp.setAttribute("class", "tooltiptext");
 
     scroll.innerText = "";
-    scroll.style.opacity= msg.dataTap[i].EreignisseGesamt / scrollGesamt;
+    // scroll.style.opacity= msg.dataTap[i].EreignisseGesamt / scrollGesamt;
+    scroll.style.backgroundColor = "rgba(252,68,69," + msg.dataTap[i].EreignisseGesamt / scrollGesamt; +")";
     scrollPopUp.innerHTML = "Scroll-Rate bis 50%: " + scrollInProzent.toFixed(2) + "% der Nutzer";
 
     scroll.appendChild(scrollPopUp);
@@ -188,7 +298,8 @@ document.querySelector("footer").appendChild(divInfo);
 
 
     scroll.innerText = "";
-    scroll.style.opacity= msg.dataTap[i].EreignisseGesamt / scrollGesamt;
+    // scroll.style.opacity= msg.dataTap[i].EreignisseGesamt / scrollGesamt;
+    scroll.style.backgroundColor = "rgba(252,68,69," + msg.dataTap[i].EreignisseGesamt / scrollGesamt; +")";
     scrollPopUp.innerHTML = "Scroll-Rate bis 25%: " + scrollInProzent.toFixed(2) + "% der Nutzer";
 
     scroll.appendChild(scrollPopUp);
@@ -200,31 +311,5 @@ document.querySelector("footer").appendChild(divInfo);
   }
 
 
-  // if (msg.navClick !== '') {
-  // //  alert(msg.navClick);
-  //
-  //
-  //
-  //
-  //   // var h1 = document.createElement("h1");
-  //   // h1.innerText = "test1234523452345";
-  //   // document.body.insertBefore(h1, document.body.firstChild);
-  //
-  // }
-  //
-  // if (msg.scroll !== '') {
-  //   //alert(msg.navClick);
-  //
-  //
-  //   // var div=document.createElement("h1");
-  //   // document.body.appendChild(div);
-  //   // div.innerText="test123";
-  //
-  //   var h1 = document.createElement("h1");
-  //   h1.innerText = msg.scroll;
-  //   document.body.insertBefore(h1, document.body.firstChild);
-  //
-  // }
+
 });
-//chrome.runtime.sendMessage({todo: "analyticsData"});
-//navClick: dataExample[i].EreignisseGesamt

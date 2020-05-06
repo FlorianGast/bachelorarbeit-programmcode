@@ -1,103 +1,103 @@
-var dataExample = [
-    {
-      "Seite": "/index.php",
-      "Ereignisaktion": "Nav Bar Click",
-      "EreignisseGesamt": 23,
-      "Nutzer": 1
-    },
-     {
-      "Seite": "/index.php",
-      "Ereignisaktion": "Nav Bar Click",
-      "EreignisseGesamt": 48,
-      "Nutzer": 1
-    },
-    {
-      "Seite": "/index.php",
-      "Ereignisaktion": "100%",
-      "EreignisseGesamt": 2,
-      "Nutzer": 1
-    },
-    {
-      "Seite": "/index.php",
-      "Ereignisaktion": "25%",
-      "EreignisseGesamt": 20,
-      "Nutzer": 1
-    },
-    {
-      "Seite": "/index.php",
-      "Ereignisaktion": "50%",
-      "EreignisseGesamt": 10,
-      "Nutzer": 1
-    },
-    {
-      "Seite": "/index.php",
-      "Ereignisaktion": "75%",
-      "EreignisseGesamt": 5,
-      "Nutzer": 1
-    }
-    ];
-
-
-var dataExampleIndex = [
-    {
-      "woher": "Suchmaschienen",
-      "zeit": "180 sec"
-    },
-    {
-      "Ereignisaktion": "Nav Bar Click",
-      "Ereignislabel": "/produkte.php",
-      "EreignisseGesamt": 20,
-      "Nutzer": 1
-    },
-    {
-      "Ereignisaktion": "Nav Bar Click",
-      "Ereignislabel": "/unternehmen.php",
-      "EreignisseGesamt": 5,
-      "Nutzer": 1
-    },
-    {
-      "Ereignisaktion": "Button click",
-      "Ereignislabel": "/unternehmen.php",
-      "EreignisseGesamt": 13,
-      "Nutzer": 1
-    },
-    {
-      "Ereignisaktion": "Button click",
-      "Ereignislabel": "/interpack-2020.php",
-      "EreignisseGesamt": 48,
-      "Nutzer": 1
-    },
-    {
-      "Ereignisaktion": "Button click",
-      "Ereignislabel": "/karriere.php",
-      "EreignisseGesamt": 4,
-      "Nutzer": 1
-    },
-    {
-      "Ereignisaktion": "25%",
-      "Ereignislabel": "",
-      "EreignisseGesamt": 50,
-      "Nutzer": 1
-    },
-    {
-      "Ereignisaktion": "50%",
-      "Ereignislabel": "",
-      "EreignisseGesamt": 30,
-      "Nutzer": 1
-    },
-    {
-      "Ereignisaktion": "75%",
-      "Ereignislabel": "",
-      "EreignisseGesamt": 20,
-      "Nutzer": 1
-    },
-    {
-      "Ereignisaktion": "100%",
-      "Ereignislabel": "",
-      "EreignisseGesamt": 14,
-      "Nutzer": 1
-    }
-    ];
+// var dataExample = [
+//     {
+//       "Seite": "/index.php",
+//       "Ereignisaktion": "Nav Bar Click",
+//       "EreignisseGesamt": 23,
+//       "Nutzer": 1
+//     },
+//      {
+//       "Seite": "/index.php",
+//       "Ereignisaktion": "Nav Bar Click",
+//       "EreignisseGesamt": 48,
+//       "Nutzer": 1
+//     },
+//     {
+//       "Seite": "/index.php",
+//       "Ereignisaktion": "100%",
+//       "EreignisseGesamt": 2,
+//       "Nutzer": 1
+//     },
+//     {
+//       "Seite": "/index.php",
+//       "Ereignisaktion": "25%",
+//       "EreignisseGesamt": 20,
+//       "Nutzer": 1
+//     },
+//     {
+//       "Seite": "/index.php",
+//       "Ereignisaktion": "50%",
+//       "EreignisseGesamt": 10,
+//       "Nutzer": 1
+//     },
+//     {
+//       "Seite": "/index.php",
+//       "Ereignisaktion": "75%",
+//       "EreignisseGesamt": 5,
+//       "Nutzer": 1
+//     }
+//     ];
+//
+//
+// var dataExampleIndex = [
+//     {
+//       "woher": "Suchmaschienen",
+//       "zeit": "180 sec"
+//     },
+//     {
+//       "Ereignisaktion": "Nav Bar Click",
+//       "Ereignislabel": "/produkte.php",
+//       "EreignisseGesamt": 20,
+//       "Nutzer": 1
+//     },
+//     {
+//       "Ereignisaktion": "Nav Bar Click",
+//       "Ereignislabel": "/unternehmen.php",
+//       "EreignisseGesamt": 5,
+//       "Nutzer": 1
+//     },
+//     {
+//       "Ereignisaktion": "Button click",
+//       "Ereignislabel": "/unternehmen.php",
+//       "EreignisseGesamt": 13,
+//       "Nutzer": 1
+//     },
+//     {
+//       "Ereignisaktion": "Button click",
+//       "Ereignislabel": "/interpack-2020.php",
+//       "EreignisseGesamt": 48,
+//       "Nutzer": 1
+//     },
+//     {
+//       "Ereignisaktion": "Button click",
+//       "Ereignislabel": "/karriere.php",
+//       "EreignisseGesamt": 4,
+//       "Nutzer": 1
+//     },
+//     {
+//       "Ereignisaktion": "25%",
+//       "Ereignislabel": "",
+//       "EreignisseGesamt": 50,
+//       "Nutzer": 1
+//     },
+//     {
+//       "Ereignisaktion": "50%",
+//       "Ereignislabel": "",
+//       "EreignisseGesamt": 30,
+//       "Nutzer": 1
+//     },
+//     {
+//       "Ereignisaktion": "75%",
+//       "Ereignislabel": "",
+//       "EreignisseGesamt": 20,
+//       "Nutzer": 1
+//     },
+//     {
+//       "Ereignisaktion": "100%",
+//       "Ereignislabel": "",
+//       "EreignisseGesamt": 14,
+//       "Nutzer": 1
+//     }
+//     ];
 
  var myURL = '';
  var aktuelleURL = '';
@@ -109,18 +109,36 @@ chrome.runtime.onMessage.addListener(function (req, sender, sendResponse) {
   chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     console.log(tabs[0].url);
     let aktuelleURL = tabs[0].url;
+    var jsonUrl = "";
 
-    if (aktuelleURL.includes("index")) {
+    if (aktuelleURL.includes("index" || ("/de" && !"/de/"))) {
 
-      chrome.tabs.sendMessage(tabs[0].id, {
-        dataTap: dataExampleIndex
-      }, function(response) {
-
-      });
+      jsonUrl = "https://florian-gast.de/JSON/startseite.json";
+      // chrome.tabs.sendMessage(tabs[0].id, {
+      //   dataTap: dataExampleIndex
+      // }, function(response) {
+      //
+      // });
 
     } else if (aktuelleURL.includes("produkte")) {
-
+      jsonUrl = "https://florian-gast.de/JSON/produkt.json"
     }
+
+    fetch(jsonUrl).then((response) => {
+        //console.log(response);
+        return response.json();
+      })
+      .then((data) => {
+        myURL = data.woher;
+          console.log('testJson ' + data);
+          chrome.tabs.sendMessage(tabs[0].id, {
+            dataTap: data
+          }, function(response) {
+
+          });
+            //console.log(myURL);
+      });
+
 
          //   for (var i = 0; i < dataExample.length; i++) {
          //    if (aktuelleURL.includes(dataExample[i].Seite)) {
@@ -164,23 +182,15 @@ chrome.runtime.onMessage.addListener(function (req, sender, sendResponse) {
 
 
 //
-fetch('https://florian-gast.de/JSON/test.json', {
-    mode: 'no-cors',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    redirect: 'follow',
-    referrerPolicy: 'no-referrer',
-  }).then((response) => {
-    console.log(response);
-    return response;
-    console.log(response);
-  })
-  .then((data) => {
-    myURL = data.class;
-      console.log('test' + myURL);
-        //console.log(myURL);
-  });
+// fetch('https://florian-gast.de/JSON/test.json').then((response) => {
+//     console.log(response);
+//     return response.json();
+//   })
+//   .then((data) => {
+//     myURL = data.woher;
+//       console.log('test' + data[0].woher);
+//         //console.log(myURL);
+//   });
 
 
 //     fetch(url, {

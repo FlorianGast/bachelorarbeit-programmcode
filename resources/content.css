@@ -1,81 +1,112 @@
+/* Animationen für Scroll Anzeige und Klick Anzeige */
+
+@keyframes klickAnimation {
+  from {
+     transform: rotateY(20deg) rotateX(35deg) translate(300px, -300px) skew(-35deg, 10deg);
+     opacity: 0;
+     background-color: #FC4445;
+   }
+   to {
+     transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
+     opacity: 1;
+     background-color: #3FEEE6;
+   }
+}
+
+@keyframes scrollAnimation {
+  from {
+         background-color: #3FEEE6;
+         opacity: 0;
+       }
+  to {
+    opacity: 1;
+    background-color: #FC4445;
+      }
+ }
+
+/* Klick Inforamtion  */
 .tooltip {
-  height: 20px;
-  width: 20px;
-  background-color: #052a68;
+  position: relative;
+  display: block;
+  height: 2px;
+  width: 2px;
+  background-color: #FC4445;
   border-radius: 50%;
   margin: auto;
-  padding: 10px;
+  padding: 9px;
+  animation-name: klickAnimation;
+  animation-duration: 2s;
   /* position: absolute;
   /* margin-left: 2%;
-  margin-top: 5px; */ */
+  margin-top: 5px; */
 }
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 120px;
-  background-color: #6083a3;
+  width: 75px;
+  background-color: #1A1A1D;
   color: #fff;
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
+  right: 30%;
+  bottom: 20%;
 
   /* Position the tooltip */
   position: absolute;
-  z-index: 1;
+  z-index: 99;
 }
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
 
-#scroll25 {
+.material-icons {
     position: absolute;
-    z-index: 1;
-    width: 4px;
+    bottom: -3px;
+    left: -2.5px;
+    color: #3FEEE6;
+    /* opacity: 0.3; */
+}
+
+/* Scroll Informationen  */
+
+#scroll25 {
     height: 25%;
-    border-radius: 4px;
-    background-color: #052a68;
-    margin-left: 4%
+    margin-left: 0.5%
 }
 
 
 #scroll50 {
-    position: absolute;
-    z-index: 1;
-    width: 4px;
     height: 50%;
-    border-radius: 4px;
-    background-color: #052a68;
-    margin-left: 6%
+    margin-left: 1.2%
 }
 
 #scroll75 {
-    position: absolute;
-    z-index: 1;
-    width: 4px;
     height: 75%;
-    border-radius: 4px;
-    background-color: #052a68;
-    margin-left: 8%
+    margin-left: 1.9%
 }
 
 #scroll100 {
-    position: absolute;
-    z-index: 1;
-    width: 4px;
     height: 100%;
-    border-radius: 4px;
-    background-color: #052a68;
-    margin-left: 10%
+    margin-left: 2.6%
 }
 
+.tooltipScroll {
+  position: absolute;
+  z-index: 99;
+  width: 8px;
+  border-radius: 2px;
+  background-color: #3FEEE6;
+  animation-name: scrollAnimation;
+  animation-duration: 5s;
+}
 
 .tooltipScroll .tooltiptext {
   visibility: hidden;
   width: 150px;
-  background-color: #052a68;
-  opacity: 1;
-  color: #ffffff;
+  background-color: #CAFAFE;
+  color: rgba(26,26,29, 0.9);
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
@@ -89,25 +120,107 @@
   visibility: visible;
 }
 
-.infoBox {
-   width: 50%;
-  color: #555555;
-  background-color: #afc1d1;
-  border:  2px solid #052a68;
-  border-radius: 0 1em 1em 1em;
-  margin:  20px auto;
-  padding: 2em;
+
+/* Allgemeine Infobox */
+.infoBoxContainer {
+  width: 100%;
+  background-color: #3FEEE6;
+  position: sticky;
+  display: inline-block;
+  top: 0;
+  z-index: 99;
+  height: 25px;
+  cursor: pointer;
+  text-align: center;
 }
+
+.infoBox {
+  display: none;
+  width: 100%;
+  font-weight: bold;
+  background-color: #55BCC9;
+  color: #1A1A1D;
+  z-index: 98;
+  margin-top: 25px;
+}
+
+.infoBoxContainer .infoBox {
+  position: sticky;
+  top: 0;
+  text-align: center;
+}
+
+.infoBoxContainer .showInfoBox {
+  display: block;
+}
+
+/* Aktivier/Deaktivier Buttons  */
 
 .button {
   background-color: #052a68;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 2px 4px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 120px;
+  height: 60px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 1.5em;
+	left: 2em;
+	width: 4em;
+	height: 2em;
+  background-color: #ccc;
+  /* -webkit-transition: .4s; */
+  /* transition: .4s; */
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  /* -webkit-transition: .4s;
+  transition: .4s; */
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
 }
